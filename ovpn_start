@@ -1,0 +1,5 @@
+#!/bin/sh
+
+proxies="$(ls ~/.config/openvpn/ | grep .ovpn)"
+chosen="$(echo "$proxies" | dmenu -i -p "Connect to:")" || exit 1
+sudo openvpn --config ~/.config/openvpn/$chosen
